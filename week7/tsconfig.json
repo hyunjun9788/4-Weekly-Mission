@@ -19,7 +19,8 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true /* 이 옵션은 외부 라이브러리(타입 정의 파일)에 대한 타입 체크를 건너뛸지 여부를 설정한다. true로 설정하면 TypeScript 컴파일러는 외부 라이브러리의 타입을 체크하지 않는다*/
+    "skipLibCheck": true /* 이 옵션은 외부 라이브러리(타입 정의 파일)에 대한 타입 체크를 건너뛸지 여부를 설정한다. true로 설정하면 TypeScript 컴파일러는 외부 라이브러리의 타입을 체크하지 않는다*/,
+    "allowImportingTsExtensions": true
   },
   "include": ["src", "react-app-env.d.ts"],
   "exclude": ["node_modules"]
