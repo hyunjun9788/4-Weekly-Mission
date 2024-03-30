@@ -1,3 +1,4 @@
+"use client";
 import "./Folder.css";
 import Image from "next/image";
 interface FolderProps {

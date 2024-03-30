@@ -1,3 +1,4 @@
+"use client";
 import logoImg from "../../../public/images/Linkbrary.png";
 import "./Header.css";
 import Folder from "./Folder";

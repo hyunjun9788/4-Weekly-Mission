@@ -1,3 +1,5 @@
+"use client";
+
 import insta from "../../../public/images/ant-design_instagram-filled.png";
 import youtube from "../../../public/images/akar-icons_youtube-fill.png";
 import twitter from "../../../public/images/akar-icons_twitter-fill.png";

@@ -49,29 +49,6 @@ export const useFetch = (url: string) => {
   return { data, error };
 };
 
-export const useFolderFetch = (url: string) => {
-  const [data, setData] = useState<FolderData | null>(null);
-  const [error, setError] = useState(null);
-  const fetchData = async () => {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`error Status: ${response.status}`);
-      }
-      const body = await response.json();
-      setData(body);
-    } catch (error: any) {
-      setError(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [url]);
-
-  return { data, error };
-};
-
 export interface SharedPageUser {
   id: number;
   name: string;
@@ -79,28 +56,6 @@ export interface SharedPageUser {
   profileImageSource: string;
 }
 
-export const useUserFetch = (url: string) => {
-  const [data, setData] = useState<SharedPageUser | null>(null);
-  const [error, setError] = useState(null);
-  const fetchData = async () => {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`error Status: ${response.status}`);
-      }
-      const body = await response.json();
-      setData(body);
-    } catch (error: any) {
-      setError(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [url]);
-
-  return { data, error };
-};
 export interface FolderPageUser {
   data: FolderPageData[];
 }

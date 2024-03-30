@@ -1,3 +1,4 @@
+"use client";
 import imgSrc from "../../../public/images/Search.png";
 import "./Header.css";
 import { useMediaQuery } from "react-responsive";

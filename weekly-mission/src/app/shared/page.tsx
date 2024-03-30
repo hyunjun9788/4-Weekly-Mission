@@ -1,12 +1,11 @@
-"use client";
+// "use client";
 
-import { useEffect } from "react";
 import "../../../globals.css";
 import Header from "../../components/SharedPage/Header";
 import Input from "../../components/SharedPage/Input";
 import Card from "../../components/SharedPage/Card";
 import Footer from "../../components/SharedPage/Footer";
-import { useFolderFetch, useUserFetch } from "../../hooks/useFetch";
+import { useFolderFetch, useUserFetch } from "../../app/api/useFetch";
 
 export type UserType = {
   id: number;
@@ -40,14 +39,15 @@ export interface Owner {
   name: string;
   profileImageSource: string;
 }
-export function SharedPage(): React.ReactElement {
+export async function SharedPage(): Promise<React.ReactElement> {
   const userUrl = "https://bootcamp-api.codeit.kr/api/sample/user";
   const folderUrl = "https://bootcamp-api.codeit.kr/api/sample/folder";
 
-  const { data: userData } = useUserFetch(userUrl);
-  const { data: folderData } = useFolderFetch(folderUrl);
+  const userData = await useUserFetch(userUrl);
+  const folderData = await useFolderFetch(folderUrl); // Promise 함수 반환
+
   console.log(userData);
-  useEffect(() => {}, [userData, folderData]);
+  console.log(folderData);
 
   return (
     <div className="App">

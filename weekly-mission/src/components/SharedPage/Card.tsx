@@ -1,3 +1,5 @@
+"use client";
+
 import "./Card.css";
 import { useMediaQuery } from "react-responsive";
 import noImg from "../../../public/images/noImage.png";
@@ -17,7 +19,7 @@ function Card({ links }: CardProps) {
   const isTablet = useMediaQuery({ maxWidth: 1124 });
 
   const formatDate = (value: string) => {
-    const date = new Date(value);
+    const date = new Date(Number(value));
     const now = new Date();
 
     const minuteInMillis = 60 * 1000;
@@ -60,6 +62,7 @@ function Card({ links }: CardProps) {
   };
   const CardItem = ({ link, url }: CardItemsProps) => {
     const timeStamp = new Date(link.createdAt).getTime();
+
     return (
       <Link className="card-url" href={url} target="_blank" rel="noreferrer">
         {link.imageSource ? (
