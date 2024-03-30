@@ -1,3 +1,4 @@
+"use client";
 import "./AddLink.css";
 import link from "../../../public/images/link.png";
 import { useEffect, useRef, useState } from "react";

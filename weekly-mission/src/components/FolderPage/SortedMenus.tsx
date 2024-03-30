@@ -1,7 +1,9 @@
+"use client";
+
 import "./SortedMenus.css";
 import { ALL_MENU_URL, LinkAddModal } from "../../app/folder/page";
 import { useMediaQuery } from "react-responsive";
-import { AllMenuData, SortedMenusData } from "../../hooks/useFetch";
+import { AllMenuData, SortedMenusData } from "../../app/api/useFolderFetch";
 
 interface ButtonProps {
   menuId?: number | undefined;

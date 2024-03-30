@@ -1,3 +1,5 @@
+"use client";
+
 import logoImg from "../../../public/images/Linkbrary.png";
 import "./FolderHeader.css";
 import AddLink from "./AddLink";
@@ -44,6 +46,7 @@ const FolderHeader: React.FC<Props> = ({
   isShowModal,
 }) => {
   const isTablet = useMediaQuery({ maxWidth: 1199 });
+
   return (
     <>
       <form>

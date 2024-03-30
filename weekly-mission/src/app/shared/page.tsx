@@ -1,11 +1,9 @@
-// "use client";
-
 import "../../../globals.css";
 import Header from "../../components/SharedPage/Header";
 import Input from "../../components/SharedPage/Input";
 import Card from "../../components/SharedPage/Card";
 import Footer from "../../components/SharedPage/Footer";
-import { useFolderFetch, useUserFetch } from "../../app/api/useFetch";
+import { useFetch } from "../../app/api/useSharedFetch";
 
 export type UserType = {
   id: number;
@@ -43,8 +41,8 @@ export async function SharedPage(): Promise<React.ReactElement> {
   const userUrl = "https://bootcamp-api.codeit.kr/api/sample/user";
   const folderUrl = "https://bootcamp-api.codeit.kr/api/sample/folder";
 
-  const userData = await useUserFetch(userUrl);
-  const folderData = await useFolderFetch(folderUrl); // Promise 함수 반환
+  const userData = await useFetch(userUrl);
+  const folderData = await useFetch(folderUrl);
 
   console.log(userData);
   console.log(folderData);

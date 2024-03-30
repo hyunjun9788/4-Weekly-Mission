@@ -10,7 +10,7 @@ import {
   useFolderCardDataFetch,
   useSortedMenusDataFetch,
   useAllMenuDataFetch,
-} from "../../hooks/useFetch";
+} from "../../app/api/useFolderFetch";
 import SortedMenus from "../../components/FolderPage/SortedMenus";
 import { useMediaQuery } from "react-responsive";
 import shareImg from "../../../public/images/share.png";
@@ -19,7 +19,9 @@ import penImg from "../../../public/images/pen.png";
 import Modal from "../../components/Modal/Modal";
 import Image from "next/image";
 import Link from "next/link";
+import { useFolderState } from "../../hooks/useFolderState";
 export const ALL_MENU_URL = "https://bootcamp-api.codeit.kr/api/users/4/links";
+
 export type LinkAddModal = {
   linkModal: boolean;
   folderAddModal: boolean;
@@ -32,21 +34,18 @@ export type LinkAddModal = {
 function FolderPage() {
   const isTablet = useMediaQuery({ maxWidth: 1124 });
   // const isMobile = useMediaQuery({ maxWidth: 767 });
-  const [folderName, setFolderName] = useState("");
-  const [menusId, setAllMenuId] = useState<number | undefined>(undefined);
-  console.log(menusId);
-  const [subUrl, setSubUrl] = useState(``);
-
-  const [addModal, setAddModal] = useState<LinkAddModal>({
-    linkModal: false,
-    folderAddModal: false,
-    shareAddModal: false,
-    editAddModal: false,
-    deleteAddModal: false,
-    linkDeleteModal: false,
-    dataUrl: "",
-  });
-  const [linkInput, setLinkInput] = useState<string>("");
+  const {
+    folderName,
+    setFolderName,
+    menusId,
+    setAllMenuId,
+    subUrl,
+    setSubUrl,
+    addModal,
+    setAddModal,
+    linkInput,
+    setLinkInput,
+  } = useFolderState();
 
   const userUrl = "https://bootcamp-api.codeit.kr/api/users/1";
 

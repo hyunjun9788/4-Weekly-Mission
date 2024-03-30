@@ -1,10 +1,12 @@
+"use client";
+
 import "./FolderCard.css";
 import { useMediaQuery } from "react-responsive";
 import { useState } from "react";
 import noImg from "../../../public/images/noImage.png";
 import kebab from "../../../public/images/kebab.png";
 import KebabFolder from "../Modal/KebabFolder";
-import { AllMenuData } from "../../hooks/useFetch";
+import { AllMenuData } from "../../app/api/useFolderFetch";
 import Image from "next/image";
 interface CardDate {
   id: number;
@@ -113,10 +115,10 @@ function FolderCard({
     const handleKebabClick = (event: React.MouseEvent<HTMLImageElement>) => {
       event.preventDefault();
 
-      setKebabMenu((prevMenus) => ({
-        ...prevMenus,
-        [dataId]: !prevMenus[dataId],
-      }));
+      // setKebabMenu((prevMenus) => ({
+      //   ...prevMenus,
+      //   [dataId]: !prevMenus[dataId],
+      // }));
     };
 
     return (
