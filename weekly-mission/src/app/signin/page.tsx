@@ -1,13 +1,13 @@
-import Image from "next/image";
-import logo from "../../../public/images/Linkbrary.png";
 import { useForm } from "react-hook-form";
-import Link from "next/link";
-import { Title } from "../../components/SigninPage/Title";
 
+import { Title } from "../../components/SigninPage/Title";
+import Form from "../../components/SigninPage/Form";
+import styles from "./signin.module.css";
 export default function SigninPage() {
   return (
-    <form>
+    <div className={styles.container}>
       <Title />
-    </form>
+      <Form />
+    </div>
   );
 }
