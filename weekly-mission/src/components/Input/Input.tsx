@@ -11,13 +11,16 @@ interface InputType {
   type: string;
   placeholder: string;
 }
-
+interface FormValue {
+  email: string;
+  password: string;
+}
 const Input = ({ id, type, placeholder }: InputType) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: "onBlur" });
+  } = useForm<FormValue>({ mode: "onBlur" });
   const [isEyeOn, setIsEyeOn] = useState(true);
 
   const onChangeEye = () => {
@@ -28,17 +31,27 @@ const Input = ({ id, type, placeholder }: InputType) => {
       {type === "email" ? (
         <input
           className={`${styles.input} ${styles.email}`}
-          {...register("email", { required: true })}
+          {...register("email", {
+            required: "이메일은 필수 입력입니다.",
+            pattern: {
+              value:
+                /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
+              message: "올바른 이메일 주소가 아닙니다.",
+            },
+          })}
         />
       ) : (
         <input
           type={isEyeOn === true ? "password" : "text"}
           className={`${styles.input} ${styles.password}`}
-          {...register("password", { required: true })}
+          {...register("password", { required: "비밀번호는 필수 입력입니다." })}
         />
       )}
+
       {errors.email && (
-        <p className={styles.errorMessage}>이메일을 입력해 주세요.</p>
+        <small className={styles.errorMessage} role="alert">
+          {errors.email.message}
+        </small>
       )}
       {type === "password" && (
         <>
@@ -62,7 +75,9 @@ const Input = ({ id, type, placeholder }: InputType) => {
         </>
       )}
       {errors.password && (
-        <p className={styles.errorMessage}>비밀번호를 입력해 주세요.</p>
+        <small className={styles.errorMessage} role="alert">
+          {errors.password.message}
+        </small>
       )}
     </div>
   );

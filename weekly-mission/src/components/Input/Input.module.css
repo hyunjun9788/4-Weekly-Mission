@@ -23,5 +23,6 @@
   width: 25px;
 }
 .errorMessage {
+  margin-top: 10px;
   color: red;
 }
