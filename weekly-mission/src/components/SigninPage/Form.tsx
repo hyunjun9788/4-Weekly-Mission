@@ -18,7 +18,6 @@ const Form = () => {
           id="email"
           type="email"
           placeholder="이메일을 입력해주세요."
-          {...register("email")}
         />
         <label htmlFor="password">비밀번호</label>
         <Input
@@ -26,7 +25,6 @@ const Form = () => {
           id="password"
           type="password"
           placeholder="비밀번호를 입력해주세요."
-          {...register("password")}
         />
         <button className={styles.button} type="submit">
           로그인

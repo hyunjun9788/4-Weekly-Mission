@@ -22,3 +22,6 @@
   right: 20px;
   width: 25px;
 }
+.errorMessage {
+  color: red;
+}

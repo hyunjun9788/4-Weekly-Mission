@@ -5,24 +5,19 @@ import eyeOff from "../../../public/images/eye-off.png";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
-{
-  /* <label htmlFor="email">이메일</label>
-        <input
-          className={styles.input}
-          id="email"
-          type="email"
-          placeholder="이메일을 입력해주세요."
-          {...register("email")}
-        /> */
-}
 
 interface InputType {
   id: string;
   type: string;
   placeholder: string;
 }
+
 const Input = ({ id, type, placeholder }: InputType) => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ mode: "onBlur" });
   const [isEyeOn, setIsEyeOn] = useState(true);
 
   const onChangeEye = () => {
@@ -33,15 +28,18 @@ const Input = ({ id, type, placeholder }: InputType) => {
       {type === "email" ? (
         <input
           className={`${styles.input} ${styles.email}`}
-          {...register(type)}
+          {...register("email", { required: true })}
         />
       ) : (
         <input
           type={isEyeOn === true ? "password" : "text"}
           className={`${styles.input} ${styles.password}`}
+          {...register("password", { required: true })}
         />
       )}
-
+      {errors.email && (
+        <p className={styles.errorMessage}>이메일을 입력해 주세요.</p>
+      )}
       {type === "password" && (
         <>
           {isEyeOn === true ? (
@@ -62,6 +60,9 @@ const Input = ({ id, type, placeholder }: InputType) => {
             />
           )}
         </>
+      )}
+      {errors.password && (
+        <p className={styles.errorMessage}>비밀번호를 입력해 주세요.</p>
       )}
     </div>
   );
