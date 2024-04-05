@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import styles from "./Form.module.css";
@@ -14,6 +14,8 @@ interface FormValue {
 }
 const Form = () => {
   const router = useRouter();
+  const pathname = usePathname();
+  console.log(pathname);
   const {
     register,
     handleSubmit,
@@ -58,8 +60,10 @@ const Form = () => {
           type="password"
           placeholder="비밀번호를 입력해주세요."
         />
-        <Button>로그인</Button>
-        <SnsLogin />
+        <Button>{pathname === "/signin" ? "로그인" : "회원가입"}</Button>
+        <SnsLogin>
+          {pathname === "/signin" ? "소셜 로그인" : "다른 방식으로 가입하기"}
+        </SnsLogin>
       </form>
     </div>
   );

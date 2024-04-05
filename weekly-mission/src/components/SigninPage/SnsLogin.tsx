@@ -4,10 +4,14 @@ import React from "react";
 import kakao from "../../../public/images/kakao.png";
 import google from "../../../public/images/google.png";
 import styles from "./Form.module.css";
-const SnsLogin = () => {
+
+interface SnsLoginProps {
+  children: React.ReactNode;
+}
+const SnsLogin = ({ children }: SnsLoginProps) => {
   return (
     <div className={styles.snsLogin}>
-      <div>소셜 로그인</div>
+      <div>{children}</div>
       <div className={styles.snsBtn}>
         <Link href="https://www.kakaocorp.com/page">
           <Image src={kakao} alt="카카오톡 로그인" />
