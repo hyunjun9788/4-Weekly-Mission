@@ -11,6 +11,7 @@ import axios from "axios";
 interface FormValue {
   email: string;
   password: string;
+  repassword: string;
 }
 const Form = () => {
   const router = useRouter();
@@ -60,6 +61,16 @@ const Form = () => {
           type="password"
           placeholder="비밀번호를 입력해주세요."
         />
+        <label htmlFor="repassword">비밀번호 확인</label>
+        {pathname === "/signup" && (
+          <Input
+            register={register}
+            errors={errors.repassword}
+            id="repassword"
+            type="repassword"
+            placeholder="비밀번호와 일치하는 값을 입력해 주세요."
+          />
+        )}
         <Button>{pathname === "/signin" ? "로그인" : "회원가입"}</Button>
         <SnsLogin>
           {pathname === "/signin" ? "소셜 로그인" : "다른 방식으로 가입하기"}

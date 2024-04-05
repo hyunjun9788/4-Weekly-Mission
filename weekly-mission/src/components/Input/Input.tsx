@@ -64,6 +64,26 @@ const Input = ({ id, type, placeholder, register, errors }: InputType) => {
           {errors.message}
         </small>
       )}
+
+      {type === "repassword" && (
+        <>
+          <input
+            type={isEyeOn ? "password" : "text"}
+            className={`${styles.input} ${styles.password}`}
+            {...register("password", {
+              required: "비밀번호는 필수 입력입니다.",
+            })}
+            placeholder={placeholder}
+          />
+          <Image
+            width={25}
+            className={styles.eye}
+            src={isEyeOn ? eyeOn : eyeOff}
+            onClick={onChangeEye}
+            alt="비밀번호 보기"
+          />
+        </>
+      )}
     </div>
   );
 };
