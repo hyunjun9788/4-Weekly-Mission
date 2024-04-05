@@ -6,6 +6,7 @@ import styles from "./Form.module.css";
 import Input from "../Input/Input";
 import SnsLogin from "./SnsLogin";
 import Button from "../common/Button";
+import axios from "axios";
 
 interface FormValue {
   email: string;
@@ -20,24 +21,24 @@ const Form = () => {
   } = useForm<FormValue>({ mode: "onBlur" });
 
   const onSubmit = async (data: any) => {
+    const { email, password } = data;
     try {
-      const response = await fetch(
+      const response = await axios.post(
         "https://bootcamp-api.codeit.kr/api/sign-in",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
+        { email, password }
       );
-      if (response.ok) {
+      if (response.data.data.accessToken) {
+        localStorage.setItem("accessToken", response.data.data.accessToken);
+      }
+      console.log(response);
+      if (response.status === 200) {
         router.push("/folder");
       }
     } catch (error) {
-      console.log(error);
+      throw new Error("로그인 실패");
     }
   };
+
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
