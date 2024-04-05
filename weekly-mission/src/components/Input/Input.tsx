@@ -7,20 +7,16 @@ import { useForm } from "react-hook-form";
 import Image from "next/image";
 
 interface InputType {
+  errors: any;
+  register: any;
   id: string;
   type: string;
   placeholder: string;
 }
-interface FormValue {
-  email: string;
-  password: string;
-}
-const Input = ({ id, type, placeholder }: InputType) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormValue>({ mode: "onBlur" });
+
+const Input = ({ id, type, placeholder, register, errors }: InputType) => {
+  console.log(errors);
+
   const [isEyeOn, setIsEyeOn] = useState(true);
 
   const onChangeEye = () => {
@@ -48,9 +44,9 @@ const Input = ({ id, type, placeholder }: InputType) => {
         />
       )}
 
-      {errors.email && (
+      {errors && (
         <small className={styles.errorMessage} role="alert">
-          {errors.email.message}
+          {errors.message}
         </small>
       )}
       {type === "password" && (
@@ -73,11 +69,6 @@ const Input = ({ id, type, placeholder }: InputType) => {
             />
           )}
         </>
-      )}
-      {errors.password && (
-        <small className={styles.errorMessage} role="alert">
-          {errors.password.message}
-        </small>
       )}
     </div>
   );
