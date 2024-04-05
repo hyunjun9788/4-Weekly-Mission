@@ -24,7 +24,7 @@ const Input = ({ id, type, placeholder, register, errors }: InputType) => {
   };
   return (
     <div className={styles.container}>
-      {type === "email" ? (
+      {type === "email" && (
         <input
           className={`${styles.input} ${styles.email}`}
           {...register("email", {
@@ -36,39 +36,31 @@ const Input = ({ id, type, placeholder, register, errors }: InputType) => {
             },
           })}
         />
-      ) : (
-        <input
-          type={isEyeOn === true ? "password" : "text"}
-          className={`${styles.input} ${styles.password}`}
-          {...register("password", { required: "비밀번호는 필수 입력입니다." })}
-        />
+      )}
+
+      {type === "password" && (
+        <>
+          <input
+            type={isEyeOn ? "password" : "text"}
+            className={`${styles.input} ${styles.password}`}
+            {...register("password", {
+              required: "비밀번호는 필수 입력입니다.",
+            })}
+          />
+          <Image
+            width={25}
+            className={styles.eye}
+            src={isEyeOn ? eyeOn : eyeOff}
+            onClick={onChangeEye}
+            alt="비밀번호 보기"
+          />
+        </>
       )}
 
       {errors && (
         <small className={styles.errorMessage} role="alert">
           {errors.message}
         </small>
-      )}
-      {type === "password" && (
-        <>
-          {isEyeOn === true ? (
-            <Image
-              width={25}
-              className={styles.eye}
-              src={eyeOn}
-              onClick={onChangeEye}
-              alt="비밀번호 보기"
-            />
-          ) : (
-            <Image
-              width={25}
-              className={styles.eye}
-              onClick={onChangeEye}
-              src={eyeOff}
-              alt="비밀번호 가리기"
-            />
-          )}
-        </>
       )}
     </div>
   );

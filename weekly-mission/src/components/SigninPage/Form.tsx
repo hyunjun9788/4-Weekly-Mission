@@ -4,6 +4,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import styles from "./Form.module.css";
 import Input from "../Input/Input";
+import SnsLogin from "./SnsLogin";
+import Button from "../common/Button";
+
 interface FormValue {
   email: string;
   password: string;
@@ -15,9 +18,8 @@ const Form = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValue>({ mode: "onBlur" });
-  const onSubmit = async (data: any) => {
-    console.log(data);
 
+  const onSubmit = async (data: any) => {
     try {
       const response = await fetch(
         "https://bootcamp-api.codeit.kr/api/sign-in",
@@ -55,9 +57,8 @@ const Form = () => {
           type="password"
           placeholder="비밀번호를 입력해주세요."
         />
-        <button className={styles.button} type="submit">
-          로그인
-        </button>
+        <Button>로그인</Button>
+        <SnsLogin />
       </form>
     </div>
   );
