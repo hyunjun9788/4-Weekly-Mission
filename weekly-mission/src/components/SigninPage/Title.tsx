@@ -16,7 +16,7 @@ export const Title = (props: TitleProps) => {
         <span>{props.text} </span>
         <Link
           className={styles.signupBtn}
-          href={props.text === "회원가입 하기" ? "/signup" : "/signin"}
+          href={props.btn === "회원 가입하기" ? "/signup" : "/signin"}
         >
           {props.btn}
         </Link>
