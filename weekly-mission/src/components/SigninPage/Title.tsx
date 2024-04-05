@@ -3,14 +3,22 @@ import logo from "../../../public/images/Linkbrary.png";
 import Link from "next/link";
 import styles from "./Title.module.css";
 import SignupPage from "../../app/signup/page";
-export const Title = () => {
+
+interface TitleProps {
+  text: string;
+  btn: string;
+}
+export const Title = (props: TitleProps) => {
   return (
     <div className={styles.title}>
       <Image width={210} height={38} src={logo} alt="linkbrary" />
       <div>
-        <span>회원이 아니신가요?</span>
-        <Link className={styles.signupBtn} href="/signup">
-          회원 가입하기
+        <span>{props.text} </span>
+        <Link
+          className={styles.signupBtn}
+          href={props.text === "회원가입 하기" ? "/signup" : "/signin"}
+        >
+          {props.btn}
         </Link>
       </div>
     </div>
