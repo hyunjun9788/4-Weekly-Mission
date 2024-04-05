@@ -1,4 +1,5 @@
 .container {
+  background-color: rgba(240, 246, 255, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
