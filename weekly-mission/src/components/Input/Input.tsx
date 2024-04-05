@@ -35,6 +35,7 @@ const Input = ({ id, type, placeholder, register, errors }: InputType) => {
               message: "올바른 이메일 주소가 아닙니다.",
             },
           })}
+          placeholder={placeholder}
         />
       )}
 
@@ -46,6 +47,7 @@ const Input = ({ id, type, placeholder, register, errors }: InputType) => {
             {...register("password", {
               required: "비밀번호는 필수 입력입니다.",
             })}
+            placeholder={placeholder}
           />
           <Image
             width={25}
