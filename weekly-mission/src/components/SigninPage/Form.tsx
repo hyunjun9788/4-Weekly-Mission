@@ -7,21 +7,18 @@ import Input from "../Input/Input";
 import SnsLogin from "./SnsLogin";
 import Button from "../common/Button";
 import axios from "axios";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { FORM_SCHEMA } from "../../constants/formSchema";
 
-interface FormValue {
-  email: string;
-  password: string;
-  repassword: string;
-}
 const Form = () => {
   const router = useRouter();
   const pathname = usePathname();
-  console.log(pathname);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValue>({ mode: "onBlur" });
+  } = useForm({ mode: "onBlur", resolver: yupResolver(FORM_SCHEMA) });
 
   const onSubmit = async (data: any) => {
     const { email, password } = data;
@@ -61,13 +58,15 @@ const Form = () => {
           type="password"
           placeholder="비밀번호를 입력해주세요."
         />
-        <label htmlFor="repassword">비밀번호 확인</label>
+        {pathname === "/signup" && (
+          <label htmlFor="passwordConfirm">비밀번호 확인</label>
+        )}
         {pathname === "/signup" && (
           <Input
             register={register}
-            errors={errors.repassword}
-            id="repassword"
-            type="repassword"
+            errors={errors.passwordConfirm}
+            id="passwordConfirm"
+            type="passwordConfirm"
             placeholder="비밀번호와 일치하는 값을 입력해 주세요."
           />
         )}
