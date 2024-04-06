@@ -25,14 +25,7 @@ const Input = ({ id, type, placeholder, register, errors }: InputType) => {
       {type === "email" && (
         <input
           className={`${styles.input} ${styles.email}`}
-          {...register("email", {
-            required: "이메일은 필수 입력입니다.",
-            pattern: {
-              value:
-                /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
-              message: "올바른 이메일 주소가 아닙니다.",
-            },
-          })}
+          {...register("email")}
           placeholder={placeholder}
         />
       )}
@@ -42,11 +35,7 @@ const Input = ({ id, type, placeholder, register, errors }: InputType) => {
           <input
             type={isEyeOn ? "password" : "text"}
             className={`${styles.input} ${styles.password}`}
-            {...register("password", {
-              required: "비밀번호는 필수 입력입니다.",
-              pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-              message: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
-            })}
+            {...register("password")}
             placeholder={placeholder}
           />
           <Image
@@ -64,7 +53,7 @@ const Input = ({ id, type, placeholder, register, errors }: InputType) => {
           <input
             type={isEyeOn ? "password" : "text"}
             className={`${styles.input} ${styles.password}`}
-            {...register("passwordConfirm", {})}
+            {...register("passwordConfirm")}
             placeholder={placeholder}
           />
           <Image
