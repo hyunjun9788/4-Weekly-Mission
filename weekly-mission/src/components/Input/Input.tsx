@@ -3,7 +3,6 @@ import eyeOn from "../../../public/images/eye-on.png";
 import eyeOff from "../../../public/images/eye-off.png";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import Image from "next/image";
 
 interface InputType {
@@ -15,13 +14,12 @@ interface InputType {
 }
 
 const Input = ({ id, type, placeholder, register, errors }: InputType) => {
-  console.log(errors);
-
   const [isEyeOn, setIsEyeOn] = useState(true);
 
   const onChangeEye = () => {
     setIsEyeOn(!isEyeOn);
   };
+
   return (
     <div className={styles.container}>
       {type === "email" && (
@@ -46,6 +44,8 @@ const Input = ({ id, type, placeholder, register, errors }: InputType) => {
             className={`${styles.input} ${styles.password}`}
             {...register("password", {
               required: "비밀번호는 필수 입력입니다.",
+              pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+              message: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
             })}
             placeholder={placeholder}
           />
@@ -59,20 +59,12 @@ const Input = ({ id, type, placeholder, register, errors }: InputType) => {
         </>
       )}
 
-      {errors && (
-        <small className={styles.errorMessage} role="alert">
-          {errors.message}
-        </small>
-      )}
-
-      {type === "repassword" && (
+      {type === "passwordConfirm" && (
         <>
           <input
             type={isEyeOn ? "password" : "text"}
             className={`${styles.input} ${styles.password}`}
-            {...register("password", {
-              required: "비밀번호는 필수 입력입니다.",
-            })}
+            {...register("passwordConfirm", {})}
             placeholder={placeholder}
           />
           <Image
@@ -83,6 +75,11 @@ const Input = ({ id, type, placeholder, register, errors }: InputType) => {
             alt="비밀번호 보기"
           />
         </>
+      )}
+      {errors && (
+        <small className={styles.errorMessage} role="alert">
+          {errors.message}
+        </small>
       )}
     </div>
   );
