@@ -46,7 +46,6 @@ const Form = () => {
         <Input
           register={register}
           errors={errors.email}
-          id="email"
           type="email"
           placeholder="이메일을 입력해주세요."
         />
@@ -54,7 +53,6 @@ const Form = () => {
         <Input
           register={register}
           errors={errors.password}
-          id="password"
           type="password"
           placeholder="비밀번호를 입력해주세요."
         />
@@ -65,7 +63,6 @@ const Form = () => {
           <Input
             register={register}
             errors={errors.passwordConfirm}
-            id="passwordConfirm"
             type="passwordConfirm"
             placeholder="비밀번호와 일치하는 값을 입력해 주세요."
           />

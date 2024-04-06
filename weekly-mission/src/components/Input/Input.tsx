@@ -4,16 +4,20 @@ import eyeOff from "../../../public/images/eye-off.png";
 
 import { useState } from "react";
 import Image from "next/image";
+import { UseFormRegister } from "react-hook-form";
 
 interface InputType {
   errors: any;
-  register: any;
-  id: string;
+  register: UseFormRegister<{
+    passwordConfirm?: string;
+    email: string;
+    password: string;
+  }>;
   type: string;
   placeholder: string;
 }
 
-const Input = ({ id, type, placeholder, register, errors }: InputType) => {
+const Input = ({ type, placeholder, register, errors }: InputType) => {
   const [isEyeOn, setIsEyeOn] = useState(true);
 
   const onChangeEye = () => {
