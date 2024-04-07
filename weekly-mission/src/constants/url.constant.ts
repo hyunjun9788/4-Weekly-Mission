@@ -3,7 +3,9 @@ export const ALL_MENU_URL = "https://bootcamp-api.codeit.kr/api/users/4/links";
 export const BASE_URL = "https://bootcamp-api.codeit.kr/api";
 export const BASE_USERS_URL = `${BASE_URL}/users`;
 export const BASE_SAMPLE_URL = `${BASE_URL}/sample`;
-
+export const BASE_CHECK_EMAIL_URL = `${BASE_URL}/check-email`;
+export const BASE_SIGNUP_URL = `${BASE_URL}/sign-up`;
+export const BASE_SIGNIN_URL = `${BASE_URL}/sign-in`;
 export const API_PATHS = {
   USERS: {
     USER: "1",
