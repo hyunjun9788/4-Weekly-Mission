@@ -1,7 +1,5 @@
-import { useForm } from "react-hook-form";
-
-import { Title } from "../../components/SigninPage/Title";
-import Form from "../../components/SigninPage/Form";
+import { Title } from "../../components/common/Title";
+import Form from "../../components/common/Form";
 import styles from "./signup.module.css";
 export default function SignupPage() {
   return (
