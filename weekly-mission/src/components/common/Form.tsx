@@ -7,19 +7,24 @@ import Input from "../Input/Input";
 import SnsLogin from "./SnsLogin";
 import Button from "../Button/Button";
 import { yupResolver } from "@hookform/resolvers/yup";
-import FORM_SCHEMA from "../../constants/FormValidation";
+import {
+  SIGNUP_FORM_SCHEMA,
+  SIGNIN_FORM_SCHEMA,
+} from "../../constants/FormValidation";
+
 import { onSigninSubmit } from "../../app/api/signinAPI";
 import { onSignupSubmit } from "../../app/api/signupAPI";
 
 const Form = () => {
   const router = useRouter();
   const pathname = usePathname();
-
+  const selectedSchema =
+    pathname === "/signup" ? SIGNUP_FORM_SCHEMA : SIGNIN_FORM_SCHEMA;
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: "onBlur", resolver: yupResolver(FORM_SCHEMA) });
+  } = useForm({ mode: "onBlur", resolver: yupResolver(selectedSchema) });
 
   const onSubmit = async (data: any) => {
     let result;
@@ -52,16 +57,17 @@ const Form = () => {
           placeholder="비밀번호를 입력해주세요."
         />
         {pathname === "/signup" && (
-          <label htmlFor="passwordConfirm">비밀번호 확인</label>
+          <>
+            <label htmlFor="passwordConfirm">비밀번호 확인</label>
+            <Input
+              register={register}
+              errors={errors.passwordConfirm}
+              type="passwordConfirm"
+              placeholder="비밀번호와 일치하는 값을 입력해 주세요."
+            />
+          </>
         )}
-        {pathname === "/signup" && (
-          <Input
-            register={register}
-            errors={errors.passwordConfirm}
-            type="passwordConfirm"
-            placeholder="비밀번호와 일치하는 값을 입력해 주세요."
-          />
-        )}
+
         <Button>{pathname === "/signin" ? "로그인" : "회원가입"}</Button>
         <SnsLogin>
           {pathname === "/signin" ? "소셜 로그인" : "다른 방식으로 가입하기"}
