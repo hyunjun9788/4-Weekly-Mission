@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_SIGNIN_URL } from "../../constants/url.constant";
+import { BASE_SIGNIN_URL } from "../constants/url.constant";
 
 interface dataType {
   email: string;

@@ -2,7 +2,7 @@ import axios from "axios";
 import {
   BASE_CHECK_EMAIL_URL,
   BASE_SIGNUP_URL,
-} from "../../constants/url.constant";
+} from "../constants/url.constant";
 
 export const checkEmailDuplicate = async (email: string) => {
   try {

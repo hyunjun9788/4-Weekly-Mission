@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { checkEmailDuplicate } from "../app/api/signupAPI";
+import { checkEmailDuplicate } from "../api/signupAPI";
 
 export const SIGNUP_FORM_SCHEMA = yup.object({
   email: yup

@@ -12,8 +12,8 @@ import {
   SIGNIN_FORM_SCHEMA,
 } from "../../constants/FormValidation";
 
-import { onSigninSubmit } from "../../app/api/signinAPI";
-import { onSignupSubmit } from "../../app/api/signupAPI";
+import { onSigninSubmit } from "../../api/signinAPI";
+import { onSignupSubmit } from "../../api/signupAPI";
 
 const Form = () => {
   const router = useRouter();
